@@ -13,8 +13,16 @@
       <label for="repo-url">Repo URL:</label>
       <input type="text" id="repo-url" class="repo-url" value="https://github.com/mnfmnfm/troll-app"/>
       <br>
-      <label for="file-paths">File paths, comma-separated, no leading slash or spaces:</label>
-      <input type="text" id="file-paths" class="file-paths" value="public/index.html,package.json,README.md"/>
+      <h5>Standard File Sets</h5>
+      <label for="node">Node</label>
+      <input type="radio" name="file-sets" value="node" id="node" class="file-sets" />
+      <label for="rails">Rails</label>
+      <input type="radio" name="file-sets" value="rails" id="rails" class="file-sets" />
+      <details>
+        <summary>Advanced: enter your own file paths</summary>
+        <label for="file-paths">File paths, comma-separated, no leading slash or spaces:</label>
+        <input type="text" id="file-paths" class="file-paths" value="public/index.html,package.json,README.md"/>
+      </details>
       <input type="submit" />
     </form>
     <div class="files">

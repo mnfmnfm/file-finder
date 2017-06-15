@@ -22,6 +22,11 @@ class GithubFile {
     this.renderSelf();
   }
 
+  gotError() {
+    this.fileContents = "File not found";
+    this.renderSelf();
+  }
+
   renderSelf() {
     this.$div.children("h2").text(this.filePath);
     this.$div.children("p").text(this.fileContents);
@@ -31,6 +36,10 @@ $(document).ready(function() {
   let $tb = $('.repo-url');
   let $fb = $('.file-paths');
   let models = [];
+  const DEFAULT_FILE_PATHS = {
+    node: "README.md,package.json,server.js,public/index.html,public/app.js",
+    rails: "i dunno nathan, what do you want"
+  }
   function getModel(filePath) {
     let model = models.find((model) => model.filePath == filePath);
     if (!model) {
@@ -47,9 +56,14 @@ $(document).ready(function() {
       $.ajax({
         method: "GET",
         url: model.fetchUrl($tb.val()),
-        success: model.gotData.bind(model)
+        success: model.gotData.bind(model),
+        error: model.gotError.bind(model)
       });
     }
+  });
+
+  $('.file-sets').on('change', function(event) {
+    $fb.val(DEFAULT_FILE_PATHS[event.target.value])
   })
 
 });
