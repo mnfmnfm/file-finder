@@ -8,6 +8,7 @@ class GithubFile {
       <h2>${this.filePath}</h2>
       <p></p>
     `);
+    // add to page
     $('.files').append(this.$div);
   }
   fetchUrl(repoUrl) {
