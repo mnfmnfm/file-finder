@@ -33,9 +33,9 @@ class GithubFile {
   }
 }
 $(document).ready(function() {
-  let $tb = $('.repo-url');
-  let $fb = $('.file-paths');
-  let models = [];
+  const $tb = $('.repo-url');
+  const $fb = $('.file-paths');
+  const models = [];
   const DEFAULT_FILE_PATHS = {
     node: "README.md,package.json,server.js,public/index.html,public/app.js",
     rails: "i dunno nathan, what do you want"
@@ -51,8 +51,8 @@ $(document).ready(function() {
   $('.file-finder').on('submit', function(event) {
     event.preventDefault();
     let files = $fb.val().split(',');
-    for (let file of files) {
-      let model = getModel(file);
+    for (const file of files) {
+      const model = getModel(file);
       $.ajax({
         method: "GET",
         url: model.fetchUrl($tb.val()),
